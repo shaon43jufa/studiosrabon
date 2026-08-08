@@ -1,6 +1,6 @@
 /* ==========================================================================
    STUDIO SRABON — NASIR UDDIN SHAON (studiosrabon.com)
-   DaVinci Color Scope Theme — Theme & Stylesheet (v3.1 Zero-Lag VFX Revealer)
+   DaVinci Color Scope Theme — Stylesheet (v3.3 Friendly Greeting & Brand Tag)
    Palette: DaVinci Resolve Studio Charcoal + Vectorscope Cyan/Magenta/Green/Amber
    Fonts: Space Grotesk (Headers), JetBrains Mono (Scopes/Tech), Inter (Body)
    ========================================================================== */
@@ -213,6 +213,19 @@ button {
   padding: 40px 20px;
 }
 
+.preloader-logo-wrap {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.preloader-logo-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px var(--scope-cyan-glow));
+}
+
 .preloader-sub {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -330,20 +343,17 @@ button {
   gap: 12px;
 }
 
-.brand-badge {
-  font-family: var(--font-mono);
-  font-weight: 800;
-  font-size: 0.9rem;
-  color: #000;
-  background: linear-gradient(135deg, var(--scope-cyan), #00b4d8);
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 0 15px var(--scope-cyan-glow);
-  flex-shrink: 0;
+.brand-logo-img {
+  height: 42px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px var(--scope-cyan-glow));
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.05);
 }
 
 .brand-text {
@@ -360,10 +370,11 @@ button {
 }
 
 .brand-tag {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 1.5px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
   color: var(--scope-cyan);
+  font-weight: 500;
 }
 
 .header-right-actions {
@@ -716,7 +727,7 @@ button {
 .hero-main-title {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   margin-bottom: 24px;
 }
 
@@ -725,8 +736,17 @@ button {
   font-weight: 700;
 }
 
+.title-greeting {
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: var(--scope-cyan);
+  letter-spacing: 3px;
+  text-shadow: 0 0 15px var(--scope-cyan-glow);
+}
+
 .title-large {
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   letter-spacing: -1px;
   background: linear-gradient(180deg, #ffffff 0%, var(--text-muted) 100%);
   -webkit-background-clip: text;
@@ -735,9 +755,9 @@ button {
 }
 
 .title-accent {
-  font-size: clamp(1.3rem, 2.3vw, 2rem);
-  color: var(--scope-cyan);
-  text-shadow: 0 0 25px var(--scope-cyan-glow);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--scope-amber);
+  text-shadow: 0 0 20px var(--scope-amber-glow);
 }
 
 .hero-description {
@@ -1963,11 +1983,24 @@ button {
   justify-content: space-between;
 }
 
+.footer-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.footer-logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px var(--scope-cyan-glow));
+}
+
 .footer-left .brand-name {
   font-family: var(--font-headline);
   font-weight: 700;
   color: var(--scope-cyan);
-  margin-bottom: 4px;
 }
 
 .footer-left p {
