@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0a0c10" />
+
+  <title>STUDIO SRABON — Nasir Uddin Shaon | Visual Artist, Video Editor, Motion Designer & VFX</title>
+  <meta name="description" content="Official portfolio of Nasir Uddin Shaon (Studio Srabon). Visual Artist, Video Editor, 3D Motion Designer, and VFX Compositor specializing in music videos, short animation films, and high-impact client films." />
+  <meta name="keywords" content="Nasir Uddin Shaon, Studio Srabon, Video Editor, Motion Designer, VFX Artist, Music Videos, Short Animation Film, DaVinci Resolve, After Effects, 3D Motion, Blender, CGI Compositing" />
+  <meta name="author" content="Nasir Uddin Shaon (Studio Srabon)" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="STUDIO SRABON" />
+  <meta property="og:title" content="STUDIO SRABON — Nasir Uddin Shaon | Visual Artist & VFX" />
+  <meta property="og:description" content="Visual Artist, Video Editor & Motion Designer crafting cinematic music videos, 3D animation, and VFX compositing." />
+  <meta property="og:url" content="https://studiosrabon.com/" />
+  <meta property="og:image" content="./assets/images/hero_artist.jpg" />
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="STUDIO SRABON — Nasir Uddin Shaon | Visual Artist" />
+  <meta name="twitter:description" content="Visual Artist, Video Editor & Motion Designer crafting cinematic music videos, 3D animation, and VFX compositing." />
+  <meta name="twitter:image" content="./assets/images/hero_artist.jpg" />
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://studiosrabon.com/#artist",
+        "name": "Nasir Uddin Shaon",
+        "alternateName": "Studio Srabon",
+        "url": "https://studiosrabon.com/",
+        "image": "https://studiosrabon.com/assets/images/hero_artist.jpg",
+        "jobTitle": "Visual Artist, Video Editor, Motion Designer & VFX Compositor",
+        "knowsAbout": [
+          "Video Editing",
+          "3D Motion Graphics",
+          "Visual Effects (VFX)",
+          "Short Animation Films",
+          "Music Video Direction",
+          "Color Grading"
+        ],
+        "sameAs": [
+          "https://vimeo.com/studiosrabon",
+          "https://youtube.com/@studiosrabon",
+          "https://instagram.com/studiosrabon",
+          "https://artstation.com/studiosrabon",
+          "https://behance.net/studiosrabon"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://studiosrabon.com/#website",
+        "url": "https://studiosrabon.com/",
+        "name": "STUDIO SRABON",
+        "publisher": { "@id": "https://studiosrabon.com/#artist" },
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Space Grotesk (Headers), JetBrains Mono (Scopes/Code), Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ================= PRELOADER ================= -->
+  <div id="preloader" class="preloader" role="status" aria-live="polite">
+    <canvas id="preloader-canvas" class="preloader-canvas"></canvas>
+    <div class="preloader-overlay"></div>
+    <div class="preloader-content">
+      <div class="preloader-header">
+        <span class="preloader-sub">DAVINCI COLOR SCOPE &bull; STUDIO SRABON</span>
+      </div>
+      <div class="preloader-title">
+        <span class="scope-accent">NASIR UDDIN SHAON</span>
+        <span class="title-sub">COLORIST &bull; MOTION &bull; VFX</span>
+      </div>
+      <div class="preloader-progress-wrap">
+        <div class="preloader-percentage" id="preloader-pct">000%</div>
+        <div class="preloader-bar-bg">
+          <div class="preloader-bar" id="preloader-bar"></div>
+        </div>
+      </div>
+      <div class="preloader-status">
+        <span class="pulse-dot"></span>
+        <span id="preloader-status-text">CALIBRATING RGB PARADE &bull; VECTORSCOPE READY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FILM GRAIN OVERLAY ================= -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- ================= BACKGROUND CANVAS ================= -->
+  <canvas id="hero-bg-canvas" class="hero-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- ================= TOP NAVIGATION HEADER ================= -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand-logo" aria-label="Studio Srabon Home">
+        <div class="brand-badge">SS</div>
+        <div class="brand-text">
+          <span class="brand-name">STUDIO SRABON</span>
+          <span class="brand-tag">NASIR UDDIN SHAON</span>
+        </div>
+      </a>
+
+      <div class="header-right-actions">
+        <!-- Audio Synth Toggle Button -->
+        <button id="btn-audio-toggle" class="audio-toggle-btn" type="button" aria-label="Toggle Atmosphere Audio" aria-pressed="false">
+          <div class="sound-wave-icon" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <span class="audio-label">AUDIO <b id="audio-state-text">OFF</b></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="#ch-reel" class="nav-link">SHOWREEL</a>
+          <a href="#ch-works" class="nav-link">WORKS</a>
+          <a href="#ch-vfx-lab" class="nav-link">VFX LAB</a>
+          <a href="#ch-services" class="nav-link">SERVICES</a>
+          <a href="#ch-contact" class="btn-contact-nav">BOOK PROJECT</a>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-link"><span>01</span> HOME</a>
+        <a href="#ch-reel" class="mobile-link"><span>02</span> SHOWREEL</a>
+        <a href="#ch-works" class="mobile-link"><span>03</span> FEATURED WORKS</a>
+        <a href="#ch-vfx-lab" class="mobile-link"><span>04</span> VFX BREAKDOWN</a>
+        <a href="#ch-services" class="mobile-link"><span>05</span> SERVICES</a>
+        <a href="#ch-numbers" class="mobile-link"><span>06</span> CREATIVE METRICS</a>
+        <a href="#ch-contact" class="mobile-link"><span>07</span> CONTACT &amp; BOOKING</a>
+      </nav>
+      <div class="drawer-footer">
+        <p>STUDIO SRABON &bull; NASIR UDDIN SHAON</p>
+        <p class="drawer-email">contact@studiosrabon.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CHAPTER NAVIGATION RAIL (LEFT SIDE) ================= -->
+  <nav class="chapter-rail" aria-label="Chapter Rail">
+    <ul>
+      <li data-ch="hero" class="active">
+        <a href="#hero"><span class="ch-num">00</span><span class="ch-title">INTRO</span></a>
+      </li>
+      <li data-ch="ch-reel">
+        <a href="#ch-reel"><span class="ch-num">01</span><span class="ch-title">REEL</span></a>
+      </li>
+      <li data-ch="ch-works">
+        <a href="#ch-works"><span class="ch-num">02</span><span class="ch-title">WORKS</span></a>
+      </li>
+      <li data-ch="ch-vfx-lab">
+        <a href="#ch-vfx-lab"><span class="ch-num">03</span><span class="ch-title">VFX LAB</span></a>
+      </li>
+      <li data-ch="ch-services">
+        <a href="#ch-services"><span class="ch-num">04</span><span class="ch-title">CRAFT</span></a>
+      </li>
+      <li data-ch="ch-numbers">
+        <a href="#ch-numbers"><span class="ch-num">05</span><span class="ch-title">METRICS</span></a>
+      </li>
+      <li data-ch="ch-contact">
+        <a href="#ch-contact"><span class="ch-num">06</span><span class="ch-title">BOOK</span></a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ================= EDGE-TO-EDGE TICKER MARQUEE ================= -->
+  <div class="marquee-ticker" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>DAVINCI COLOR GRADING &bull; 3D MOTION DESIGN &bull; VFX COMPOSITING &bull; MUSIC VIDEOS &bull; ANIMATION FILMS &bull; REC.709 / DCI-P3 SCOPES &bull;</span>
+        <span>DAVINCI COLOR GRADING &bull; 3D MOTION DESIGN &bull; VFX COMPOSITING &bull; MUSIC VIDEOS &bull; ANIMATION FILMS &bull; REC.709 / DCI-P3 SCOPES &bull;</span>
+      </div>
+      <div class="marquee-content">
+        <span>DAVINCI COLOR GRADING &bull; 3D MOTION DESIGN &bull; VFX COMPOSITING &bull; MUSIC VIDEOS &bull; ANIMATION FILMS &bull; REC.709 / DCI-P3 SCOPES &bull;</span>
+        <span>DAVINCI COLOR GRADING &bull; 3D MOTION DESIGN &bull; VFX COMPOSITING &bull; MUSIC VIDEOS &bull; ANIMATION FILMS &bull; REC.709 / DCI-P3 SCOPES &bull;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main role="main">
+
+    <!-- ============================================================
+         CHAPTER 00: HERO SECTION
+         ============================================================ -->
+    <section class="hero-section" id="hero" aria-label="Hero Introduction">
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-kicker">
+            <span class="kicker-tag">REC.709 &bull; COLORIST</span>
+            <span class="kicker-text">VISUAL ARTIST &amp; MOTION DESIGNER</span>
+          </div>
+
+          <h1 class="hero-main-title">
+            <span class="title-line title-large">NASIR UDDIN SHAON</span>
+            <span class="title-line title-accent">CINEMATIC COLOR &amp; VFX DIRECTION</span>
+          </h1>
+
+          <p class="hero-description">
+            Precision color grading and visual effects master crafting high-impact <strong>music videos</strong>, <strong>3D short animation films</strong>, photorealistic <strong>VFX compositing</strong>, and broadcast <strong>commercial films</strong>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#ch-reel" class="btn-primary-glow">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <span>WATCH 2026 SHOWREEL</span>
+            </a>
+            <a href="#ch-works" class="btn-secondary-glass">
+              <span>EXPLORE PORTFOLIO</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-software-pills">
+            <span class="software-label">DA VINCI SCOPE TECH MATRIX:</span>
+            <div class="pill-list">
+              <span class="sw-pill pill-cyan">DAVINCI RESOLVE 19</span>
+              <span class="sw-pill pill-magenta">AFTER EFFECTS</span>
+              <span class="sw-pill pill-green">BLENDER 3D</span>
+              <span class="sw-pill pill-amber">CINEMA 4D</span>
+              <span class="sw-pill">NUKE VFX</span>
+              <span class="sw-pill">PREMIERE PRO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <div class="hero-frame-container">
+            <img src="./assets/images/hero_artist.jpg" alt="Nasir Uddin Shaon in DaVinci Resolve Studio color suite" class="hero-portrait-img" />
+            <div class="frame-scanlines"></div>
+            <div class="scope-overlay-badge">
+              <span class="scope-label cyan-glow">VECTORSCOPE: 100%</span>
+              <span class="scope-label magenta-glow">YRGB PARADE</span>
+            </div>
+            <div class="hero-card-badge">
+              <span class="badge-dot"></span>
+              <span class="badge-txt">STUDIO SRABON &bull; COLOR LAB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-down">
+        <a href="#ch-reel" aria-label="Scroll to Showreel">
+          <span>SCROLL DOWN</span>
+          <div class="scroll-arrow">↓</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 01: CINEMATIC SHOWREEL
+         ============================================================ -->
+    <section class="chapter-section ch-reel" id="ch-reel" aria-labelledby="reel-heading">
+      <div class="section-container">
+        <div class="section-head">
+          <span class="ch-badge">CHAPTER 01 &bull; DEMO REEL</span>
+          <h2 id="reel-heading" class="section-title">2026 CINEMATIC SHOWREEL</h2>
+          <p class="section-subtitle">A precision-graded compilation of music video cuts, 3D motion passes, and photorealistic VFX compositing.</p>
+        </div>
+
+        <div class="showreel-player-box">
+          <div class="showreel-thumbnail-wrap">
+            <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Studio Srabon Showreel 2026 Preview" class="showreel-bg-img" />
+            <div class="showreel-overlay"></div>
+            
+            <button id="btn-play-showreel" class="play-reel-btn" aria-label="Play Full Screen Showreel">
+              <div class="play-btn-circle">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="play-btn-text">PLAY SHOWREEL (02:45)</span>
+            </button>
+
+            <div class="reel-tags-bar">
+              <span class="cyan-txt">★ MUSIC VIDEOS</span>
+              <span class="magenta-txt">★ 3D ANIMATION</span>
+              <span class="green-txt">★ VFX COMPOSITING</span>
+              <span class="amber-txt">★ COLOR GRADING</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 02: FEATURED WORKS PORTFOLIO
+         ============================================================ -->
+    <section class="chapter-section ch-works" id="ch-works" aria-labelledby="works-heading">
+      <div class="section-container">
+        <div class="section-head">
+          <span class="ch-badge">CHAPTER 02 &bull; GALLERY</span>
+          <h2 id="works-heading" class="section-title">SELECTED PORTFOLIO</h2>
+          <p class="section-subtitle">Explore recent projects crafted for musicians, animation studios, tech brands, and global clients.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="portfolio-filter-bar">
+          <button class="filter-btn active" data-filter="all">ALL PROJECTS</button>
+          <button class="filter-btn" data-filter="music-video">MUSIC VIDEOS</button>
+          <button class="filter-btn" data-filter="motion-design">MOTION DESIGN</button>
+          <button class="filter-btn" data-filter="vfx">VFX &amp; CGI</button>
+          <button class="filter-btn" data-filter="animation">SHORT ANIMATION</button>
+          <button class="filter-btn" data-filter="commercial">COMMERCIALS</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="portfolio-grid" id="portfolio-grid">
+
+          <!-- Project Card 1: Music Video -->
+          <article class="project-card" data-category="music-video vfx" data-project-id="p1">
+            <div class="card-media">
+              <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Cyberpunk Music Video Project" class="card-thumb" />
+              <div class="card-media-overlay">
+                <button class="btn-watch-modal" data-title="Neon Genesis — Cyberpunk Music Video" data-video="p1" data-cat="Music Video / VFX" data-desc="Futuristic music video with heavy neon glow effects, chroma keying, 3D hologram projections, and rhythmic quick cuts tuned to bass drops." data-tools="DaVinci Resolve, After Effects, Blender, Element 3D">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>WATCH VIDEO</span>
+                </button>
+              </div>
+              <span class="card-type-badge cyan-badge">MUSIC VIDEO</span>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-client">SYNTHWAVE RECORDS</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Neon Genesis — Cyberpunk MV</h3>
+              <p class="card-excerpt">Complete video edit, DaVinci color grading, kinetic typography, and 3D hologram VFX compositing.</p>
+              <div class="card-tags">
+                <span class="tag-cyan">VFX Compositing</span><span>Video Editing</span><span class="tag-amber">DaVinci Grade</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 2: Short Animation Film -->
+          <article class="project-card" data-category="animation motion-design" data-project-id="p2">
+            <div class="card-media">
+              <img src="./assets/images/project_scifi_animation.jpg" alt="Sci-Fi 3D Short Animation Film" class="card-thumb" />
+              <div class="card-media-overlay">
+                <button class="btn-watch-modal" data-title="Chronos 2099 — Sci-Fi Short Film" data-video="p2" data-cat="Short Animation / 3D" data-desc="Award-winning 3D sci-fi short film following an astronaut on a distant crystal planet. Full storyboarding, 3D character animation, environment design, and atmospheric sound design." data-tools="Blender 3D, Unreal Engine 5, DaVinci Resolve">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>WATCH SHORT FILM</span>
+                </button>
+              </div>
+              <span class="card-type-badge magenta-badge">3D ANIMATION</span>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-client">INDIE ANIMATION LAB</span>
+                <span class="card-year">2025</span>
+              </div>
+              <h3 class="card-title">Chronos 2099 — Sci-Fi Short</h3>
+              <p class="card-excerpt">Stylized 3D character rigging, volumetric crystal lighting, space environment rendering, and story direction.</p>
+              <div class="card-tags">
+                <span class="tag-magenta">3D Animation</span><span>Environment Design</span><span>Sound Design</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 3: VFX Compositing Breakdown -->
+          <article class="project-card" data-category="vfx commercial" data-project-id="p3">
+            <div class="card-media">
+              <img src="./assets/images/project_vfx_breakdown.jpg" alt="VFX Superhero Kinetic Storm Project" class="card-thumb" />
+              <div class="card-media-overlay">
+                <button class="btn-watch-modal" data-title="Kinetic Storm — VFX Compositing" data-video="p3" data-cat="VFX / Commercial" data-desc="High-energy superhero sequence featuring green screen removal, 3D camera tracking, electrical lightning particles, and environmental destruction layers." data-tools="Nuke, After Effects, Mocha Pro, Cinema 4D">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>VIEW VFX BREAKDOWN</span>
+                </button>
+              </div>
+              <span class="card-type-badge green-badge">VFX &amp; CGI</span>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-client">APEX PRODUCTIONS</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Kinetic Storm — VFX Reel</h3>
+              <p class="card-excerpt">3D camera tracking, green-screen chroma keying, lighting integration, dynamic sparks &amp; shockwaves.</p>
+              <div class="card-tags">
+                <span class="tag-green">Green Screen</span><span>Particle FX</span><span>Matchmoving</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 4: Motion Design & Brand Commercial -->
+          <article class="project-card" data-category="motion-design commercial" data-project-id="p4">
+            <div class="card-media">
+              <img src="./assets/images/hero_artist.jpg" alt="Aetheria Luxury Brand Commercial" class="card-thumb" />
+              <div class="card-media-overlay">
+                <button class="btn-watch-modal" data-title="Aetheria — Liquid Gold Motion Graphics" data-video="p4" data-cat="Motion Design / Commercial" data-desc="Sleek motion graphic commercial for a luxury fashion brand with liquid metal physics, elegant kinetic typography, and rich gold color grading." data-tools="Cinema 4D, Redshift, After Effects">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>WATCH COMMERCIAL</span>
+                </button>
+              </div>
+              <span class="card-type-badge amber-badge">MOTION DESIGN</span>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-client">AETHERIA LUXURY</span>
+                <span class="card-year">2025</span>
+              </div>
+              <h3 class="card-title">Aetheria — Luxury Motion Promo</h3>
+              <p class="card-excerpt">3D liquid simulation, metallic shading, golden geometry, and smooth brand transitions.</p>
+              <div class="card-tags">
+                <span class="tag-amber">3D Motion</span><span>Kinetic Type</span><span>Commercial</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 5: Hip-Hop Music Video -->
+          <article class="project-card" data-category="music-video vfx" data-project-id="p5">
+            <div class="card-media">
+              <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Sub Zero Velocity Hip-Hop Music Video" class="card-thumb" />
+              <div class="card-media-overlay">
+                <button class="btn-watch-modal" data-title="Sub Zero Velocity — Hip-Hop Music Video" data-video="p5" data-cat="Music Video / Editing" data-desc="Fast-paced urban hip-hop music video edit featuring dynamic speed ramping, thermal color passes, distortion transitions, and 3D kinetic text overlays." data-tools="Premiere Pro, After Effects, DaVinci Resolve">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>WATCH MUSIC VIDEO</span>
+                </button>
+              </div>
+              <span class="card-type-badge cyan-badge">MUSIC VIDEO</span>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-client">METRO AUDIO</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">Sub Zero Velocity — Music Edit</h3>
+              <p class="card-excerpt">Dynamic speed ramping, thermal color FX, glitch transitions, and kinetic lyric animation.</p>
+              <div class="card-tags">
+                <span>Pacing Edit</span><span class="tag-cyan">Thermal Grade</span><span>Color Grade</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 6: Quantum Spark Commercial -->
+          <article class="project-card" data-category="commercial motion-design" data-project-id="p6">
+            <div class="card-media">
+              <img src="./assets/images/project_scifi_animation.jpg" alt="Quantum Spark Tech Launch Commercial" class="card-thumb" />
+              <div class="card-media-overlay">
+                <button class="btn-watch-modal" data-title="Quantum Spark — Tech Launch Promo" data-video="p6" data-cat="Commercial / Motion" data-desc="High-impact hardware tech reveal commercial created with 3D product CAD animation, circuit board lighting, and punchy sound design." data-tools="Blender 3D, After Effects, Octane Render">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>WATCH TECH PROMO</span>
+                </button>
+              </div>
+              <span class="card-type-badge green-badge">COMMERCIAL</span>
+            </div>
+            <div class="card-info">
+              <div class="card-meta">
+                <span class="card-client">QUANTUM HARDWARE</span>
+                <span class="card-year">2025</span>
+              </div>
+              <h3 class="card-title">Quantum Spark — Product Launch</h3>
+              <p class="card-excerpt">3D CAD product exploded view, circuit board particle illumination, and broadcast motion design.</p>
+              <div class="card-tags">
+                <span class="tag-green">Product Render</span><span>3D Motion</span><span>Tech Promo</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 03: INTERACTIVE BEFORE/AFTER VFX LAB
+         ============================================================ -->
+    <section class="chapter-section ch-vfx-lab" id="ch-vfx-lab" aria-labelledby="vfx-lab-heading">
+      <div class="section-container">
+        <div class="section-head">
+          <span class="ch-badge">CHAPTER 03 &bull; COMPOSITING LAB</span>
+          <h2 id="vfx-lab-heading" class="section-title">INTERACTIVE VFX BREAKDOWN LAB</h2>
+          <p class="section-subtitle">Drag the slider to compare raw production plates (green screen/tracking) vs finished composited visual effects.</p>
+        </div>
+
+        <div class="vfx-slider-widget" id="vfx-slider-widget">
+          <div class="vfx-image-layer vfx-after">
+            <img src="./assets/images/project_vfx_breakdown.jpg" alt="Composited VFX Render Final" />
+            <span class="vfx-label label-after">FINAL COMPOSITED RENDER &amp; VFX</span>
+          </div>
+
+          <div class="vfx-image-layer vfx-before" id="vfx-before-layer">
+            <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Raw Plate Green Screen Tracking" />
+            <span class="vfx-label label-before">RAW PLATE / WIREFRAME TRACKING</span>
+          </div>
+
+          <div class="vfx-slider-handle" id="vfx-slider-handle">
+            <div class="handle-line"></div>
+            <div class="handle-button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/></svg>
+            </div>
+            <div class="handle-line"></div>
+          </div>
+        </div>
+
+        <div class="vfx-breakdown-steps">
+          <div class="step-card">
+            <span class="step-num step-cyan">01</span>
+            <h4>Matchmoving &amp; 3D Track</h4>
+            <p>Precise camera tracking to insert 3D objects into live-action plates with realistic perspective and lens distortion alignment.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num step-magenta">02</span>
+            <h4>Chroma Key &amp; Rotoscoping</h4>
+            <p>Clean green screen extraction, hair detail preservation, spill suppression, and intricate roto masking.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num step-green">03</span>
+            <h4>CGI &amp; Particle Integration</h4>
+            <p>Layering volumetric fog, shockwaves, electrical energy arcs, debris particles, and dynamic light emission.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num step-amber">04</span>
+            <h4>DaVinci Color Grade</h4>
+            <p>DaVinci Resolve color passes to blend CG elements seamlessly with live actors, creating a cohesive cinematic mood.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 04: CRAFT & SERVICES
+         ============================================================ -->
+    <section class="chapter-section ch-services" id="ch-services" aria-labelledby="services-heading">
+      <div class="section-container">
+        <div class="section-head">
+          <span class="ch-badge">CHAPTER 04 &bull; CAPABILITIES</span>
+          <h2 id="services-heading" class="section-title">SERVICES &amp; CAPABILITIES</h2>
+          <p class="section-subtitle">Full-suite post-production, DaVinci color grading, and creative direction tailored for artists, directors, and brands.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card card-cyan-border">
+            <div class="service-icon icon-cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+            </div>
+            <h3 class="service-title">Video Editing &amp; Pacing</h3>
+            <p class="service-desc">Rhythmic cutting, music sync, fast-paced transitions, sound design integration, narrative story assembly for music videos and short films.</p>
+            <ul class="service-list">
+              <li>Music Video Editing</li>
+              <li>Trailer &amp; Commercial Cuts</li>
+              <li>Multi-cam Pacing &amp; Pacing</li>
+              <li>Sound Design &amp; SFX Pacing</li>
+            </ul>
+          </div>
+
+          <div class="service-card card-magenta-border">
+            <div class="service-icon icon-magenta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3 class="service-title">3D Motion Graphics</h3>
+            <p class="service-desc">High-end kinetic typography, 3D abstract object animations, title reveals, promo graphics, and broadcast animation packages.</p>
+            <ul class="service-list">
+              <li>3D Logo &amp; Title Animations</li>
+              <li>Kinetic Typography &amp; HUDs</li>
+              <li>Brand Motion Systems</li>
+              <li>Abstract 3D Loop Animations</li>
+            </ul>
+          </div>
+
+          <div class="service-card card-green-border">
+            <div class="service-icon icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="service-title">VFX &amp; CGI Compositing</h3>
+            <p class="service-desc">Green screen removal, environment replacement, energy &amp; fire effects, 3D camera tracking, digital object cleanups.</p>
+            <ul class="service-list">
+              <li>Chroma Key &amp; Rotoscoping</li>
+              <li>3D Camera Matchmoving</li>
+              <li>Particle &amp; Explosion FX</li>
+              <li>Beauty &amp; Object Cleanups</li>
+            </ul>
+          </div>
+
+          <div class="service-card card-amber-border">
+            <div class="service-icon icon-amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </div>
+            <h3 class="service-title">DaVinci Color Grading</h3>
+            <p class="service-desc">Professional DaVinci Resolve Studio color pass, skin tone preservation, custom LUT creation, Rec.709 &amp; DCI-P3 color space management.</p>
+            <ul class="service-list">
+              <li>DaVinci Resolve Studio Pass</li>
+              <li>Film Emulation &amp; Look Creation</li>
+              <li>HDR &amp; Rec.709 Master Exports</li>
+              <li>Shot-to-Shot Color Matching</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 05: CREATIVE METRICS & NUMBERS
+         ============================================================ -->
+    <section class="chapter-section ch-numbers" id="ch-numbers" aria-labelledby="numbers-heading">
+      <div class="section-container">
+        <div class="section-head text-center">
+          <span class="ch-badge">CHAPTER 05 &bull; STATS</span>
+          <h2 id="numbers-heading" class="section-title">CREATIVE IMPACT IN NUMBERS</h2>
+          <p class="section-subtitle">Delivering high quality visual art across global music videos, animation, and client projects.</p>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card card-cyan-accent">
+            <span class="metric-val" data-target="150">0</span><span class="metric-plus text-cyan">+</span>
+            <span class="metric-label cyan-txt">PROJECTS COMPLETED</span>
+            <p class="metric-sub">Music videos, motion graphics, and VFX sequences.</p>
+          </div>
+
+          <div class="metric-card card-magenta-accent">
+            <span class="metric-val" data-target="12">0</span><span class="metric-plus text-magenta">M+</span>
+            <span class="metric-label magenta-txt">TOTAL VIDEO VIEWS</span>
+            <p class="metric-sub">Across YouTube, Vimeo, and client channels.</p>
+          </div>
+
+          <div class="metric-card card-green-accent">
+            <span class="metric-val" data-target="45">0</span><span class="metric-plus text-green">+</span>
+            <span class="metric-label green-txt">MUSIC VIDEOS EDITED</span>
+            <p class="metric-sub">Collaborations with independent and indie artists.</p>
+          </div>
+
+          <div class="metric-card card-amber-accent">
+            <span class="metric-val" data-target="99">0</span><span class="metric-plus text-amber">%</span>
+            <span class="metric-label amber-txt">ON-TIME DELIVERY</span>
+            <p class="metric-sub">Strict adherence to client release deadlines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 06: CONTACT & PROJECT BOOKING
+         ============================================================ -->
+    <section class="chapter-section ch-contact" id="ch-contact" aria-labelledby="contact-heading">
+      <div class="section-container">
+        <div class="contact-wrapper">
+
+          <div class="contact-left">
+            <span class="ch-badge">CHAPTER 06 &bull; INQUIRIES</span>
+            <h2 id="contact-heading" class="contact-title">LET'S BUILD SOMETHING CINEMATIC.</h2>
+            <p class="contact-desc">
+              Have a music video, 3D short animation, VFX shot, or commercial project in mind? Reach out to discuss timelines, pricing, and creative direction.
+            </p>
+
+            <div class="contact-info-list">
+              <div class="info-item">
+                <span class="info-icon icon-cyan">📧</span>
+                <div class="info-content">
+                  <span class="info-label">DIRECT EMAIL</span>
+                  <a href="mailto:contact@studiosrabon.com" class="info-val text-cyan">contact@studiosrabon.com</a>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon icon-magenta">🌐</span>
+                <div class="info-content">
+                  <span class="info-label">STUDIO DOMAIN</span>
+                  <span class="info-val text-magenta">studiosrabon.com</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon icon-green">📍</span>
+                <div class="info-content">
+                  <span class="info-label">LOCATION &amp; TIMZONE</span>
+                  <span class="info-val text-green">Worldwide Remote &bull; GMT+6</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-social-links">
+              <a href="https://vimeo.com" target="_blank" rel="noopener" class="social-pill pill-cyan">VIMEO</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" class="social-pill pill-magenta">YOUTUBE</a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="social-pill pill-green">INSTAGRAM</a>
+              <a href="https://artstation.com" target="_blank" rel="noopener" class="social-pill pill-amber">ARTSTATION</a>
+              <a href="https://behance.net" target="_blank" rel="noopener" class="social-pill">BEHANCE</a>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <form id="project-booking-form" class="booking-form">
+              <h3 class="form-title">PROJECT INQUIRY &amp; ESTIMATOR</h3>
+              
+              <div class="form-group">
+                <label for="client-name">YOUR NAME / COMPANY *</label>
+                <input type="text" id="client-name" name="name" placeholder="e.g. Alex Rivers / Neo Records" required />
+              </div>
+
+              <div class="form-group">
+                <label for="client-email">EMAIL ADDRESS *</label>
+                <input type="email" id="client-email" name="email" placeholder="e.g. alex@records.com" required />
+              </div>
+
+              <div class="form-group">
+                <label>PROJECT TYPE *</label>
+                <div class="form-pills-selector">
+                  <label class="type-pill">
+                    <input type="radio" name="project_type" value="Music Video" checked />
+                    <span>Music Video</span>
+                  </label>
+                  <label class="type-pill">
+                    <input type="radio" name="project_type" value="3D Animation" />
+                    <span>3D Animation</span>
+                  </label>
+                  <label class="type-pill">
+                    <input type="radio" name="project_type" value="VFX Compositing" />
+                    <span>VFX Compositing</span>
+                  </label>
+                  <label class="type-pill">
+                    <input type="radio" name="project_type" value="Commercial / Motion" />
+                    <span>Commercial</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="project-budget">ESTIMATED BUDGET RANGE</label>
+                <select id="project-budget" name="budget">
+                  <option value="$1,000 - $3,000">$1,000 &ndash; $3,000</option>
+                  <option value="$3,000 - $5,000" selected>$3,000 &ndash; $5,000</option>
+                  <option value="$5,000 - $10,000">$5,000 &ndash; $10,000</option>
+                  <option value="$10,000+">$10,000+ (Custom Scope)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="project-details">PROJECT DESCRIPTION &amp; TIMELINE *</label>
+                <textarea id="project-details" name="details" rows="4" placeholder="Tell me about your song, film story, reference videos, or deadline..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit-form" id="btn-submit-booking">
+                <span>SEND PROJECT INQUIRY</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+
+              <div id="form-feedback" class="form-feedback" style="display: none;"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= VIDEO PLAYER MODAL ================= -->
+  <div class="video-modal-backdrop" id="video-modal" aria-hidden="true">
+    <div class="video-modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">&times;</button>
+      
+      <div class="modal-video-container">
+        <!-- Canvas Demo Player or Video iFrame -->
+        <div class="demo-video-player" id="modal-video-display">
+          <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Video preview" id="modal-video-img" />
+          <div class="demo-player-controls">
+            <button class="demo-play-btn" id="demo-play-toggle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="demo-timeline">
+              <div class="demo-progress-fill" id="demo-progress-fill"></div>
+            </div>
+            <span class="demo-time" id="demo-time-display">00:15 / 02:45</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-details">
+        <span class="modal-cat" id="modal-project-cat">MUSIC VIDEO / VFX</span>
+        <h3 class="modal-title" id="modal-project-title">Project Title</h3>
+        <p class="modal-desc" id="modal-project-desc">Project breakdown description.</p>
+        <div class="modal-tools-wrap">
+          <span>SOFTWARE USED:</span>
+          <div class="modal-tools-list" id="modal-project-tools">
+            <span class="sw-pill">After Effects</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="brand-name">STUDIO SRABON</div>
+        <p>© 2026 Nasir Uddin Shaon. All rights reserved. Registered domain: <b>studiosrabon.com</b></p>
+      </div>
+
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top">
+          <span>BACK TO TOP</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/audio-synth.js"></script>
+  <script src="./js/canvas-fx.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
