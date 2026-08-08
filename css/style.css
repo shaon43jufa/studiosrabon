@@ -172,6 +172,7 @@ button {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: var(--bg-darker);
   z-index: 99999;
   display: flex;
@@ -750,6 +751,7 @@ button {
   letter-spacing: -1px;
   background: linear-gradient(180deg, #ffffff 0%, var(--text-muted) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   word-break: break-word;
 }

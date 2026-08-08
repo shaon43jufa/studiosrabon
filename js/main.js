@@ -109,6 +109,7 @@ function initChapterScrollSpy() {
   if (railItems.length === 0 || sections.length === 0) return;
 
   window.addEventListener("scroll", () => {
+    if (window.innerWidth <= 1024) return;
     let currentId = "";
     const scrollPos = window.scrollY + 250;
 
@@ -126,7 +127,7 @@ function initChapterScrollSpy() {
         item.classList.add("active");
       }
     });
-  });
+  }, { passive: true });
 }
 
 /* --------------------------------------------------------------------------
@@ -390,6 +391,7 @@ function initMetricCounters() {
     const rect = section.getBoundingClientRect();
     if (rect.top < window.innerHeight - 100) {
       animated = true;
+      window.removeEventListener("scroll", runCounters);
       counterEls.forEach(el => {
         const target = parseInt(el.getAttribute("data-target"), 10);
         let count = 0;
@@ -406,5 +408,5 @@ function initMetricCounters() {
     }
   };
 
-  window.addEventListener("scroll", runCounters);
+  window.addEventListener("scroll", runCounters, { passive: true });
 }
