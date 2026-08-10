@@ -140,7 +140,8 @@
         <nav class="desktop-nav" aria-label="Main Navigation">
           <a href="#ch-reel" class="nav-link">SHOWREEL</a>
           <a href="#ch-works" class="nav-link">WORKS</a>
-          <a href="#ch-vfx-lab" class="nav-link">PROCESS</a>
+          <a href="#ch-process" class="nav-link">PROCESS</a>
+          <a href="#ch-testimonials" class="nav-link">REVIEWS</a>
           <a href="#ch-services" class="nav-link">SERVICES</a>
           <a href="#ch-contact" class="btn-contact-nav">BOOK PROJECT</a>
         </nav>
@@ -160,10 +161,11 @@
         <a href="#hero" class="mobile-link"><span>01</span> HOME</a>
         <a href="#ch-reel" class="mobile-link"><span>02</span> SHOWREEL</a>
         <a href="#ch-works" class="mobile-link"><span>03</span> FEATURED WORKS</a>
-        <a href="#ch-vfx-lab" class="mobile-link"><span>04</span> VFX BREAKDOWN</a>
-        <a href="#ch-services" class="mobile-link"><span>05</span> SERVICES</a>
-        <a href="#ch-numbers" class="mobile-link"><span>06</span> CREATIVE METRICS</a>
-        <a href="#ch-contact" class="mobile-link"><span>07</span> CONTACT &amp; BOOKING</a>
+        <a href="#ch-process" class="mobile-link"><span>04</span> WORK PROCESS</a>
+        <a href="#ch-testimonials" class="mobile-link"><span>05</span> TESTIMONIALS</a>
+        <a href="#ch-services" class="mobile-link"><span>06</span> SERVICES</a>
+        <a href="#ch-numbers" class="mobile-link"><span>07</span> CREATIVE METRICS</a>
+        <a href="#ch-contact" class="mobile-link"><span>08</span> CONTACT &amp; BOOKING</a>
       </nav>
       <div class="drawer-footer">
         <p>STUDIO SRABON &bull; AN ARTISTIC VISUAL STUDIO</p>
@@ -184,17 +186,20 @@
       <li data-ch="ch-works">
         <a href="#ch-works"><span class="ch-num">02</span><span class="ch-title">WORKS</span></a>
       </li>
-      <li data-ch="ch-vfx-lab">
-        <a href="#ch-vfx-lab"><span class="ch-num">03</span><span class="ch-title">PROCESS</span></a>
+      <li data-ch="ch-process">
+        <a href="#ch-process"><span class="ch-num">03</span><span class="ch-title">PROCESS</span></a>
+      </li>
+      <li data-ch="ch-testimonials">
+        <a href="#ch-testimonials"><span class="ch-num">04</span><span class="ch-title">REVIEWS</span></a>
       </li>
       <li data-ch="ch-services">
-        <a href="#ch-services"><span class="ch-num">04</span><span class="ch-title">CRAFT</span></a>
+        <a href="#ch-services"><span class="ch-num">05</span><span class="ch-title">CRAFT</span></a>
       </li>
       <li data-ch="ch-numbers">
-        <a href="#ch-numbers"><span class="ch-num">05</span><span class="ch-title">METRICS</span></a>
+        <a href="#ch-numbers"><span class="ch-num">06</span><span class="ch-title">METRICS</span></a>
       </li>
       <li data-ch="ch-contact">
-        <a href="#ch-contact"><span class="ch-num">06</span><span class="ch-title">BOOK</span></a>
+        <a href="#ch-contact"><span class="ch-num">07</span><span class="ch-title">BOOK</span></a>
       </li>
     </ul>
   </nav>
@@ -501,25 +506,25 @@
     </section>
 
     <!-- ============================================================
-         CHAPTER 03: INTERACTIVE BEFORE/AFTER PROCESS
+         CHAPTER 03: CONCEPT TO FINAL PRODUCTION PROCESS
          ============================================================ -->
-    <section class="chapter-section ch-vfx-lab" id="ch-vfx-lab" aria-labelledby="vfx-lab-heading">
+    <section class="chapter-section ch-vfx-lab" id="ch-process" aria-labelledby="vfx-lab-heading">
       <div class="section-container">
         <div class="section-head">
-          <span class="ch-badge">CHAPTER 03 &bull; COMPOSITING LAB</span>
-          <h2 id="vfx-lab-heading" class="section-title">INTERACTIVE VFX BREAKDOWN LAB</h2>
-          <p class="section-subtitle">Drag the slider to compare raw production plates (green screen/tracking) vs finished composited visual effects.</p>
+          <span class="ch-badge">CHAPTER 03 &bull; WORK PROCESS</span>
+          <h2 id="vfx-lab-heading" class="section-title">CONCEPT TO FINAL PRODUCTION</h2>
+          <p class="section-subtitle">From initial storyboards and raw plate tracking to photorealistic CGI and DaVinci color grading.</p>
         </div>
 
         <div class="vfx-slider-widget" id="vfx-slider-widget">
           <div class="vfx-image-layer vfx-after">
             <img src="./assets/images/project_vfx_breakdown.jpg" alt="Composited VFX Render Final" />
-            <span class="vfx-label label-after">FINAL COMPOSITED RENDER &amp; VFX</span>
+            <span class="vfx-label label-after">04. FINAL COMPOSITED MASTER RENDER</span>
           </div>
 
           <div class="vfx-image-layer vfx-before" id="vfx-before-layer">
             <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Raw Plate Green Screen Tracking" />
-            <span class="vfx-label label-before">RAW PLATE / WIREFRAME TRACKING</span>
+            <span class="vfx-label label-before">01. RAW CONCEPT PLATE / WIREFRAME TRACKING</span>
           </div>
 
           <div class="vfx-slider-handle" id="vfx-slider-handle">
@@ -534,35 +539,118 @@
         <div class="vfx-breakdown-steps">
           <div class="step-card">
             <span class="step-num step-cyan">01</span>
-            <h4>Matchmoving &amp; 3D Track</h4>
-            <p>Precise camera tracking to insert 3D objects into live-action plates with realistic perspective and lens distortion alignment.</p>
+            <h4>Concept &amp; Matchmove</h4>
+            <p>Storyboarding, moodboards, and 3D camera tracking to align live-action plates with virtual camera setups.</p>
           </div>
           <div class="step-card">
             <span class="step-num step-magenta">02</span>
-            <h4>Chroma Key &amp; Rotoscoping</h4>
-            <p>Clean green screen extraction, hair detail preservation, spill suppression, and intricate roto masking.</p>
+            <h4>Roto &amp; Pre-Vis</h4>
+            <p>Chroma key extraction, green screen rotoscoping, clean plate prep, and proxy layout animatics.</p>
           </div>
           <div class="step-card">
             <span class="step-num step-green">03</span>
-            <h4>CGI &amp; Particle Integration</h4>
-            <p>Layering volumetric fog, shockwaves, electrical energy arcs, debris particles, and dynamic light emission.</p>
+            <h4>VFX &amp; CGI Animation</h4>
+            <p>Layering 3D assets, volumetric fog, particle physics, lighting integration, and energy simulations.</p>
           </div>
           <div class="step-card">
             <span class="step-num step-amber">04</span>
-            <h4>DaVinci Color Grade</h4>
-            <p>DaVinci Resolve color passes to blend CG elements seamlessly with live actors, creating a cohesive cinematic mood.</p>
+            <h4>DaVinci Grade &amp; Master</h4>
+            <p>Rec.709 color pass, film look emulation, sound design sync, and final high-bitrate master export.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         CHAPTER 04: CRAFT & SERVICES
+         CHAPTER 04: CLIENT REVIEWS & TESTIMONIALS
+         ============================================================ -->
+    <section class="chapter-section ch-testimonials" id="ch-testimonials" aria-labelledby="testimonials-heading">
+      <div class="section-container">
+        <div class="section-head">
+          <span class="ch-badge">CHAPTER 04 &bull; TESTIMONIALS</span>
+          <h2 id="testimonials-heading" class="section-title">CLIENT REVIEWS &amp; FEEDBACK</h2>
+          <p class="section-subtitle">Real experiences from music artists, film directors, and global brand partners.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card card-cyan-border">
+            <div class="t-card-header">
+              <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="t-badge t-cyan-badge">MUSIC VIDEO</span>
+            </div>
+            <p class="t-quote">
+              &ldquo;Nasir took our synthwave track and built a futuristic visual masterpiece. The 3D hologram VFX and DaVinci color grade exceeded all expectations.&rdquo;
+            </p>
+            <div class="t-author">
+              <div class="t-avatar avatar-cyan">MV</div>
+              <div class="t-meta">
+                <h4 class="t-name">Marcus Vance</h4>
+                <span class="t-role">Lead Artist &bull; Synthwave Records</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card card-magenta-border">
+            <div class="t-card-header">
+              <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="t-badge t-magenta-badge">3D ANIMATION</span>
+            </div>
+            <p class="t-quote">
+              &ldquo;The level of detail in the 3D character animation and environment lighting for Chronos 2099 was world-class. Absolute master of visual storytelling.&rdquo;
+            </p>
+            <div class="t-author">
+              <div class="t-avatar avatar-magenta">ER</div>
+              <div class="t-meta">
+                <h4 class="t-name">Elena Rostova</h4>
+                <span class="t-role">Animation Director &bull; Indie Film Lab</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card card-amber-border">
+            <div class="t-card-header">
+              <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="t-badge t-amber-badge">COMMERCIAL</span>
+            </div>
+            <p class="t-quote">
+              &ldquo;Studio Srabon delivered our luxury commercial on a super tight deadline without sacrificing an ounce of render quality. Liquid gold simulation was stunning!&rdquo;
+            </p>
+            <div class="t-author">
+              <div class="t-avatar avatar-amber">JT</div>
+              <div class="t-meta">
+                <h4 class="t-name">Julian Thorne</h4>
+                <span class="t-role">Creative Director &bull; Aetheria Luxury</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card card-green-border">
+            <div class="t-card-header">
+              <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="t-badge t-green-badge">VFX &amp; CGI</span>
+            </div>
+            <p class="t-quote">
+              &ldquo;Seamless green screen compositing and tracking for Kinetic Storm. He blended our live actors with CG lightning effects effortlessly.&rdquo;
+            </p>
+            <div class="t-author">
+              <div class="t-avatar avatar-green">SJ</div>
+              <div class="t-meta">
+                <h4 class="t-name">Sarah Jenkins</h4>
+                <span class="t-role">Executive Producer &bull; Apex Pictures</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CHAPTER 05: CRAFT & SERVICES
          ============================================================ -->
     <section class="chapter-section ch-services" id="ch-services" aria-labelledby="services-heading">
       <div class="section-container">
         <div class="section-head">
-          <span class="ch-badge">CHAPTER 04 &bull; CAPABILITIES</span>
+          <span class="ch-badge">CHAPTER 05 &bull; CAPABILITIES</span>
           <h2 id="services-heading" class="section-title">SERVICES &amp; CAPABILITIES</h2>
           <p class="section-subtitle">Full-suite post-production, DaVinci color grading, and creative direction tailored for artists, directors, and brands.</p>
         </div>
@@ -630,12 +718,12 @@
     </section>
 
     <!-- ============================================================
-         CHAPTER 05: CREATIVE METRICS & NUMBERS
+         CHAPTER 06: CREATIVE METRICS & NUMBERS
          ============================================================ -->
     <section class="chapter-section ch-numbers" id="ch-numbers" aria-labelledby="numbers-heading">
       <div class="section-container">
         <div class="section-head text-center">
-          <span class="ch-badge">CHAPTER 05 &bull; STATS</span>
+          <span class="ch-badge">CHAPTER 06 &bull; STATS</span>
           <h2 id="numbers-heading" class="section-title">CREATIVE IMPACT IN NUMBERS</h2>
           <p class="section-subtitle">Delivering high quality visual art across global music videos, animation, and client projects.</p>
         </div>
@@ -669,14 +757,14 @@
     </section>
 
     <!-- ============================================================
-         CHAPTER 06: CONTACT & PROJECT BOOKING
+         CHAPTER 07: CONTACT & PROJECT BOOKING
          ============================================================ -->
     <section class="chapter-section ch-contact" id="ch-contact" aria-labelledby="contact-heading">
       <div class="section-container">
         <div class="contact-wrapper">
 
           <div class="contact-left">
-            <span class="ch-badge">CHAPTER 06 &bull; INQUIRIES</span>
+            <span class="ch-badge">CHAPTER 07 &bull; INQUIRIES</span>
             <h2 id="contact-heading" class="contact-title">LET'S BUILD SOMETHING CINEMATIC.</h2>
             <p class="contact-desc">
               Have a music video, 3D short animation, VFX shot, or commercial project in mind? Reach out to discuss timelines, pricing, and creative direction.
