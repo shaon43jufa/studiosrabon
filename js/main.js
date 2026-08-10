@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initVideoModal();
   initBookingForm();
   initMetricCounters();
+  initDynamicMarquee();
 });
 
 /* --------------------------------------------------------------------------
@@ -446,3 +447,45 @@ function initMetricCounters() {
 
   window.addEventListener("scroll", runCounters, { passive: true });
 }
+
+/* --------------------------------------------------------------------------
+   10. DYNAMIC SEAMLESS MARQUEE TICKER (RANDOM SPAWN / ROTATING LIST)
+   -------------------------------------------------------------------------- */
+function initDynamicMarquee() {
+  const track = document.getElementById("marquee-track");
+  const sourceList = document.getElementById("marquee-items-source");
+  if (!track || !sourceList) return;
+
+  // Extract entries directly from HTML <li> elements
+  const listItems = Array.from(sourceList.querySelectorAll("li"))
+    .map(li => li.textContent.trim())
+    .filter(Boolean);
+
+  if (listItems.length === 0) return;
+
+  // 1. Randomize entry spawn order
+  const shuffled = [...listItems].sort(() => Math.random() - 0.5);
+
+  // 2. Repeat entries until block is guaranteed wide enough for any viewport
+  let sequenceArray = [];
+  while (sequenceArray.length < 24) {
+    sequenceArray = sequenceArray.concat(shuffled);
+  }
+  const textContent = sequenceArray.join(" • ") + " • ";
+
+  // 3. Render twin identical blocks for 100% seamless looping
+  track.innerHTML = `
+    <div class="marquee-content"><span>${textContent}</span></div>
+    <div class="marquee-content"><span>${textContent}</span></div>
+  `;
+
+  // 4. Calculate animation duration to enforce a constant scroll speed (50px/sec)
+  const firstBlock = track.firstElementChild;
+  if (firstBlock) {
+    const contentWidth = firstBlock.offsetWidth;
+    const SPEED_PX_PER_SEC = 50; // Constant speed in pixels per second
+    const duration = contentWidth / SPEED_PX_PER_SEC;
+    track.style.animationDuration = `${duration.toFixed(2)}s`;
+  }
+}
+

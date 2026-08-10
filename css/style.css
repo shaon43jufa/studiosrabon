@@ -640,7 +640,7 @@ button {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 90s linear infinite;
 }
 
 .marquee-content {
@@ -655,6 +655,7 @@ button {
   letter-spacing: 3px;
   font-weight: 700;
   color: var(--scope-cyan);
+  white-space: nowrap;
 }
 
 @keyframes marquee {
@@ -930,7 +931,9 @@ button {
 }
 
 .cyan-glow { color: var(--scope-cyan); border: 1px solid var(--border-scope); }
-.magenta-glow { color: var(--scope-magenta); border: 1px solid rgba(255, 42, 141, 0.3); }
+.magenta-glow { color: var(--scope-magenta); border: 1px solid var(--border-scope); }
+.green-glow { color: var(--scope-green); border: 1px solid var(--border-scope); }
+.amber-glow { color: var(--scope-amber); border: 1px solid var(--border-scope); }
 
 .hero-card-badge {
   position: absolute;
@@ -1209,6 +1212,7 @@ button {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 .card-thumb {
