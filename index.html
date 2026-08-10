@@ -220,7 +220,6 @@
          CHAPTER 00: HERO SECTION
          ============================================================ -->
     <section class="hero-section" id="hero" aria-label="Hero Introduction">
-      <div class="hero-ambient-glow" aria-hidden="true"></div>
 
       <div class="hero-container">
         <div class="hero-content">
@@ -265,6 +264,7 @@
         </div>
 
         <div class="hero-visual-card">
+          <div class="hero-ambient-glow" aria-hidden="true"></div>
           <div class="hero-frame-container">
             <img src="./assets/images/hero_artist.jpg" alt="Nasir Uddin Shaon in DaVinci Resolve Studio color suite" class="hero-portrait-img" />
             <div class="frame-scanlines"></div>
@@ -784,7 +784,9 @@
   <!-- ================= VIDEO PLAYER MODAL ================= -->
   <div class="video-modal-backdrop" id="video-modal" aria-hidden="true">
     <div class="video-modal-dialog">
-      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">&times;</button>
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
       
       <div class="modal-video-container">
         <!-- Canvas Demo Player or Video iFrame -->
