@@ -782,14 +782,17 @@
   </main>
 
   <!-- ================= VIDEO PLAYER MODAL ================= -->
-  <div class="video-modal-backdrop" id="video-modal" aria-hidden="true">
+  <div class="video-modal-backdrop" id="video-modal" aria-hidden="true" inert>
     <div class="video-modal-dialog">
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       
       <div class="modal-video-container">
-        <!-- Canvas Demo Player or Video iFrame -->
+        <!-- Real HTML5 Video Player -->
+        <video id="modal-video-player" class="modal-video-element" controls playsinline preload="metadata" style="display: none;"></video>
+
+        <!-- Fallback Demo Player -->
         <div class="demo-video-player" id="modal-video-display">
           <img src="./assets/images/project_cyberpunk_mv.jpg" alt="Video preview" id="modal-video-img" />
           <div class="demo-player-controls">

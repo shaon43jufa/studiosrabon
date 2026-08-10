@@ -242,6 +242,9 @@ function initVideoModal() {
   const modalTools = document.getElementById("modal-project-tools");
   const modalImg = document.getElementById("modal-video-img");
 
+  const videoPlayer = document.getElementById("modal-video-player");
+  const demoDisplay = document.getElementById("modal-video-display");
+
   const demoPlayToggle = document.getElementById("demo-play-toggle");
   const demoProgressFill = document.getElementById("demo-progress-fill");
   const demoTimeDisplay = document.getElementById("demo-time-display");
@@ -257,27 +260,59 @@ function initVideoModal() {
     if (modalTitle) modalTitle.textContent = data.title || "Project Reel";
     if (modalCat) modalCat.textContent = data.cat || "VIDEO PRODUCTION";
     if (modalDesc) modalDesc.textContent = data.desc || "Visual arts post-production project breakdown.";
-    if (modalImg && data.img) modalImg.src = data.img;
 
     if (modalTools && data.tools) {
       const toolsArr = data.tools.split(",");
       modalTools.innerHTML = toolsArr.map(t => `<span class="sw-pill">${t.trim()}</span>`).join("");
     }
 
+    if (data.videoSrc && videoPlayer) {
+      // Load and play actual video
+      videoPlayer.src = data.videoSrc;
+      videoPlayer.style.display = "block";
+      if (demoDisplay) demoDisplay.style.display = "none";
+      videoPlayer.play().catch(() => {});
+    } else {
+      // Fallback preview
+      if (videoPlayer) {
+        videoPlayer.pause();
+        videoPlayer.removeAttribute("src");
+        videoPlayer.style.display = "none";
+      }
+      if (demoDisplay) demoDisplay.style.display = "block";
+      if (modalImg && data.img) modalImg.src = data.img;
+      startDemoPlayback();
+    }
+
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
-    startDemoPlayback();
+    modal.inert = false;
   };
 
   const closeModal = () => {
+    if (document.activeElement && modal.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     modal.classList.remove("active");
     modal.setAttribute("aria-hidden", "true");
+    modal.inert = true;
+
+    if (videoPlayer) {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+    }
     stopDemoPlayback();
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
+    }
   });
 
   if (btnShowreel) {
@@ -287,6 +322,7 @@ function initVideoModal() {
         cat: "SHOWREEL / COMPILATION",
         desc: "A comprehensive montage of high-tempo music video edits, 3D short animation scenes, and photorealistic VFX compositing by Nasir Uddin Shaon.",
         tools: "After Effects, Premiere Pro, Blender, Cinema 4D, DaVinci Resolve, Nuke",
+        videoSrc: "./assets/showreel.mp4",
         img: "./assets/images/project_cyberpunk_mv.jpg"
       });
     });
