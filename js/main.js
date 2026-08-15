@@ -247,15 +247,7 @@ function initVideoModal() {
   const demoDisplay = document.getElementById("modal-video-display");
 
   const demoPlayToggle = document.getElementById("demo-play-toggle");
-  const demoProgressFill = document.getElementById("demo-progress-fill");
-  const demoTimeDisplay = document.getElementById("demo-time-display");
-
   if (!modal) return;
-
-  let progressInterval = null;
-  let isPlaying = false;
-  let currentSeconds = 15;
-  const totalSeconds = 165;
 
   const openModal = (data) => {
     if (modalTitle) modalTitle.textContent = data.title || "Project Reel";
@@ -268,13 +260,13 @@ function initVideoModal() {
     }
 
     if (data.videoSrc && videoPlayer) {
-      // Load and play actual video
+      // Load and play actual video if videoSrc is provided
       videoPlayer.src = data.videoSrc;
       videoPlayer.style.display = "block";
       if (demoDisplay) demoDisplay.style.display = "none";
       videoPlayer.play().catch(() => {});
     } else {
-      // Fallback preview
+      // Image Preview mode
       if (videoPlayer) {
         videoPlayer.pause();
         videoPlayer.removeAttribute("src");
@@ -282,7 +274,6 @@ function initVideoModal() {
       }
       if (demoDisplay) demoDisplay.style.display = "block";
       if (modalImg && data.img) modalImg.src = data.img;
-      startDemoPlayback();
     }
 
     modal.classList.add("active");
@@ -302,7 +293,6 @@ function initVideoModal() {
       videoPlayer.pause();
       videoPlayer.currentTime = 0;
     }
-    stopDemoPlayback();
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
@@ -324,7 +314,7 @@ function initVideoModal() {
         desc: "A comprehensive montage of high-tempo music video edits, 3D short animation scenes, and photorealistic VFX compositing by Nasir Uddin Shaon.",
         tools: "After Effects, Premiere Pro, Blender, Cinema 4D, DaVinci Resolve, Nuke",
         videoSrc: "./assets/showreel.mp4",
-        img: "./assets/images/project_cyberpunk_mv.jpg"
+        img: "./assets/images/showreelthumb.jpg"
       });
     });
   }
@@ -339,42 +329,10 @@ function initVideoModal() {
         cat: btn.getAttribute("data-cat"),
         desc: btn.getAttribute("data-desc"),
         tools: btn.getAttribute("data-tools"),
-        img: thumbImg ? thumbImg.src : "./assets/images/project_cyberpunk_mv.jpg"
+        img: thumbImg ? thumbImg.src : "./assets/images/fallback.jpg"
       });
     });
   });
-
-  function startDemoPlayback() {
-    isPlaying = true;
-    if (progressInterval) clearInterval(progressInterval);
-    progressInterval = setInterval(() => {
-      if (!isPlaying) return;
-      currentSeconds++;
-      if (currentSeconds > totalSeconds) currentSeconds = 0;
-
-      const pct = (currentSeconds / totalSeconds) * 100;
-      if (demoProgressFill) demoProgressFill.style.width = pct + "%";
-      if (demoTimeDisplay) {
-        const mins = Math.floor(currentSeconds / 60);
-        const secs = String(currentSeconds % 60).padStart(2, "0");
-        demoTimeDisplay.textContent = `${String(mins).padStart(2, "0")}:${secs} / 02:45`;
-      }
-    }, 1000);
-  }
-
-  function stopDemoPlayback() {
-    isPlaying = false;
-    if (progressInterval) clearInterval(progressInterval);
-  }
-
-  if (demoPlayToggle) {
-    demoPlayToggle.addEventListener("click", () => {
-      isPlaying = !isPlaying;
-      demoPlayToggle.innerHTML = isPlaying
-        ? `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`
-        : `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
-    });
-  }
 }
 
 /* --------------------------------------------------------------------------
