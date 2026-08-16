@@ -313,7 +313,7 @@ function initVideoModal() {
         cat: "SHOWREEL / COMPILATION",
         desc: "A comprehensive montage of high-tempo music video edits, 3D short animation scenes, and photorealistic VFX compositing by Nasir Uddin Shaon.",
         tools: "After Effects, Premiere Pro, Blender, Cinema 4D, DaVinci Resolve, Nuke",
-        videoSrc: "./assets/showreel.mp4",
+        videoSrc: "./assets/videos/showreel.webm",
         img: "./assets/images/showreelthumb.jpg"
       });
     });
