@@ -247,7 +247,7 @@ function initVideoModal() {
   const demoDisplay = document.getElementById("modal-video-display");
 
   const demoPlayToggle = document.getElementById("demo-play-toggle");
-  if (!modal) return;
+  let wasSynthPlaying = false;
 
   const openModal = (data) => {
     if (modalTitle) modalTitle.textContent = data.title || "Project Reel";
@@ -273,16 +273,26 @@ function initVideoModal() {
       videoPlayer.onloadeddata = null;
     }
 
+    if (window.atmosphereSynth && window.atmosphereSynth.isPlaying) {
+      wasSynthPlaying = true;
+      window.atmosphereSynth.stop();
+    }
+
     if (data.videoSrc && videoPlayer) {
       videoPlayer.controls = !data.isLoop;
       videoPlayer.loop = !!data.isLoop;
-      videoPlayer.muted = !!data.isLoop;
+      videoPlayer.muted = false;
+      videoPlayer.volume = 1.0;
       videoPlayer.playsInline = true;
 
       videoPlayer.onloadeddata = () => {
         videoPlayer.style.display = "block";
         if (demoDisplay) demoDisplay.style.display = "none";
-        videoPlayer.play().catch(() => {});
+        videoPlayer.play().catch(() => {
+          // If browser autoplay policy requires mute on initial load, fallback cleanly
+          videoPlayer.muted = true;
+          videoPlayer.play().catch(() => {});
+        });
       };
 
       videoPlayer.onerror = () => {
@@ -313,6 +323,11 @@ function initVideoModal() {
       videoPlayer.currentTime = 0;
       videoPlayer.removeAttribute("src");
       videoPlayer.load();
+    }
+
+    if (wasSynthPlaying && window.atmosphereSynth && !window.atmosphereSynth.isPlaying) {
+      window.atmosphereSynth.start();
+      wasSynthPlaying = false;
     }
   };
 
@@ -407,7 +422,7 @@ function initMetricCounters() {
   let animated = false;
 
   const runCounters = () => {
-    const section = document.getElementById("ch-numbers");
+    const section = document.getElementById("ch-metrics") || document.getElementById("ch-numbers") || document.querySelector(".metrics-grid");
     if (!section || animated) return;
 
     const rect = section.getBoundingClientRect();
