@@ -347,7 +347,7 @@ function initVideoModal() {
       const thumbImg = card ? card.querySelector(".card-thumb") : null;
       const projectId = card ? card.getAttribute("data-project-id") : "";
       const num = projectId ? projectId.replace(/\D/g, "") : "";
-      const candidateVideo = num ? `./assets/images/projects/project${num}.webm` : "";
+      const candidateVideo = num ? `./assets/top6projects/project${num}.webm` : "";
 
       openModal({
         title: btn.getAttribute("data-title"),
