@@ -252,28 +252,47 @@ function initVideoModal() {
   const openModal = (data) => {
     if (modalTitle) modalTitle.textContent = data.title || "Project Reel";
     if (modalCat) modalCat.textContent = data.cat || "VIDEO PRODUCTION";
-    if (modalDesc) modalDesc.textContent = data.desc || "Visual arts post-production project breakdown.";
+    if (modalDesc) modalDesc.innerHTML = data.desc || "Visual arts post-production project breakdown.";
 
     if (modalTools && data.tools) {
       const toolsArr = data.tools.split(",");
       modalTools.innerHTML = toolsArr.map(t => `<span class="sw-pill">${t.trim()}</span>`).join("");
     }
 
+    if (modalImg && data.img) {
+      modalImg.src = data.img;
+    }
+
+    // Default to image display first
+    if (demoDisplay) demoDisplay.style.display = "block";
+    if (videoPlayer) {
+      videoPlayer.style.display = "none";
+      videoPlayer.pause();
+      videoPlayer.removeAttribute("src");
+      videoPlayer.onerror = null;
+      videoPlayer.onloadeddata = null;
+    }
+
     if (data.videoSrc && videoPlayer) {
-      // Load and play actual video if videoSrc is provided
-      videoPlayer.src = data.videoSrc;
-      videoPlayer.style.display = "block";
-      if (demoDisplay) demoDisplay.style.display = "none";
-      videoPlayer.play().catch(() => {});
-    } else {
-      // Image Preview mode
-      if (videoPlayer) {
-        videoPlayer.pause();
-        videoPlayer.removeAttribute("src");
+      videoPlayer.controls = !data.isLoop;
+      videoPlayer.loop = !!data.isLoop;
+      videoPlayer.muted = !!data.isLoop;
+      videoPlayer.playsInline = true;
+
+      videoPlayer.onloadeddata = () => {
+        videoPlayer.style.display = "block";
+        if (demoDisplay) demoDisplay.style.display = "none";
+        videoPlayer.play().catch(() => {});
+      };
+
+      videoPlayer.onerror = () => {
+        // If WebM not found, keep image preview visible
         videoPlayer.style.display = "none";
-      }
-      if (demoDisplay) demoDisplay.style.display = "block";
-      if (modalImg && data.img) modalImg.src = data.img;
+        if (demoDisplay) demoDisplay.style.display = "block";
+      };
+
+      videoPlayer.src = data.videoSrc;
+      videoPlayer.load();
     }
 
     modal.classList.add("active");
@@ -292,6 +311,8 @@ function initVideoModal() {
     if (videoPlayer) {
       videoPlayer.pause();
       videoPlayer.currentTime = 0;
+      videoPlayer.removeAttribute("src");
+      videoPlayer.load();
     }
   };
 
@@ -314,6 +335,7 @@ function initVideoModal() {
         desc: "A comprehensive montage of high-tempo music video edits, 3D short animation scenes, and photorealistic VFX compositing by Nasir Uddin Shaon.",
         tools: "After Effects, Premiere Pro, Blender, Cinema 4D, DaVinci Resolve, Nuke",
         videoSrc: "./assets/videos/showreel.webm",
+        isLoop: false,
         img: "./assets/images/showreelthumb.jpg"
       });
     });
@@ -323,12 +345,17 @@ function initVideoModal() {
     btn.addEventListener("click", () => {
       const card = btn.closest(".project-card");
       const thumbImg = card ? card.querySelector(".card-thumb") : null;
+      const projectId = card ? card.getAttribute("data-project-id") : "";
+      const num = projectId ? projectId.replace(/\D/g, "") : "";
+      const candidateVideo = num ? `./assets/images/projects/project${num}.webm` : "";
 
       openModal({
         title: btn.getAttribute("data-title"),
         cat: btn.getAttribute("data-cat"),
         desc: btn.getAttribute("data-desc"),
         tools: btn.getAttribute("data-tools"),
+        videoSrc: candidateVideo,
+        isLoop: true,
         img: thumbImg ? thumbImg.src : "./assets/images/fallback.jpg"
       });
     });
