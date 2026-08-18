@@ -1534,6 +1534,10 @@ button {
 .card-green-border:hover { border-color: rgba(0, 255, 135, 0.4); }
 .card-amber-border:hover { border-color: rgba(255, 183, 3, 0.4); }
 
+.store-mobile-card {
+  display: none;
+}
+
 .service-icon {
   width: 50px;
   height: 50px;
@@ -2167,6 +2171,27 @@ button {
     display: flex;
   }
 
+  .audio-label {
+    display: none;
+  }
+
+  .audio-toggle-btn {
+    padding: 8px 10px;
+  }
+
+  .hero-section {
+    padding-top: 16px;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .hero-kicker {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .hero-cta-group {
     flex-direction: column;
     align-items: stretch;
@@ -2186,6 +2211,15 @@ button {
 
   .reel-tags-bar {
     display: none;
+  }
+
+  .ch-store .services-grid {
+    display: none;
+  }
+
+  .store-mobile-card {
+    display: block;
+    margin-bottom: 24px;
   }
 }
 
